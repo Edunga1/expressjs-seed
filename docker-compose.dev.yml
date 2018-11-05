@@ -1,0 +1,21 @@
+version: '3'
+services:
+  exressjs-seed:
+    build: .
+    restart: always
+    ports:
+      - '5000:5000'
+      - '9228:9222'
+    volumes:
+      - .:/usr/src/app
+    environment:
+      NODE_ENV: 'development'
+    command: [
+      'node_modules/.bin/nodemon',
+      '--ignore',
+      'dist/',
+      '--ext',
+      'ts,js',
+      '--exec',
+      'npm start'
+    ]
